@@ -23,9 +23,9 @@ public class AvivaTest {
 
     @BeforeClass
     public static void startFireFox() {
-        //webDriver = new ChromeDriver();
+        webDriver = new ChromeDriver();
        
-        webDriver = new FirefoxDriver();
+        //webDriver = new FirefoxDriver();
         
         //webDriver = new InternetExplorerDriver();
      
@@ -58,6 +58,7 @@ public class AvivaTest {
 
     @AfterClass
     public static void closeFireFox() {
+        //webDriver.close();
         webDriver.quit();
     }
 }
