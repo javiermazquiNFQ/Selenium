@@ -1,5 +1,6 @@
 package es.nfq.insurance.selenium.aviva;
 
+import static es.nfq.insurance.selenium.aviva.AvivaTest.webDriver;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +18,8 @@ import java.util.List;
 
 public class AvivaHomeTest extends AvivaTest{
 
-    private static final String HOME_TITLE = "Grupo Aviva - compañía de seguros líder en Europa, el mayor grupo asegurador de Reino Unido y uno de los principales";
+    private static final String HOME_TITLE = "Grupo Aviva - compañía de seguros líder en Europa, el mayor grupo asegurador de Reino Unido y uno de los principales proveedores de seguros de vida y generales de Europa";
+
 
     @Test
     public void searchAviva(){
@@ -27,6 +29,7 @@ public class AvivaHomeTest extends AvivaTest{
         WebDriverWait wait = new WebDriverWait(webDriver,100);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.
                 linkText("Grupo Aviva - compañía de seguros líder en Europa, el mayor grupo ...")));
+        
         WebElement avivaLink = checkFirstResult(); //valida que es el primer resultado
 
         Assert.assertEquals(HOME_URL, avivaLink.getAttribute("href"));
@@ -34,6 +37,7 @@ public class AvivaHomeTest extends AvivaTest{
         avivaLink.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("headerNav")));
         Assert.assertEquals(HOME_TITLE, webDriver.getTitle());
+        
     }
 
     private WebElement checkFirstResult() {

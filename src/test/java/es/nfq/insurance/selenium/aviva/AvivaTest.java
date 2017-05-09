@@ -7,6 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class AvivaTest {
 
@@ -19,16 +23,24 @@ public class AvivaTest {
 
     @BeforeClass
     public static void startFireFox() {
-        webDriver = new ChromeDriver();
+        //webDriver = new ChromeDriver();
+       
+        webDriver = new FirefoxDriver();
+        
+        //webDriver = new InternetExplorerDriver();
+     
+        
+        
     }
 
     protected void checkHeaderNav(){
         List<WebElement> allElements = webDriver.findElements(By.xpath("//ul[@id='headerNav']/li"));
         int i = 0;
+        String aux;
         System.out.println("checkHeaderNav:");
         for (WebElement ele: allElements) {
-            System.out.println(ele.getText());
-            Assert.assertEquals(HEADERS[i], ele.getText());
+            aux=ele.getText();
+            Assert.assertEquals(HEADERS[i], aux);
             i++;
         }
     }
@@ -46,7 +58,6 @@ public class AvivaTest {
 
     @AfterClass
     public static void closeFireFox() {
-        webDriver.close();
         webDriver.quit();
     }
 }
